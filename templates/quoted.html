@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    {{quote["name"]}} shares ({{quote["symbol"]}}) are currently worth {{quote["price"]}} each.
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table table-bordered table-hover" style="text-align: left">
+        <thead class="thead-dark">
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan=4></td>
+                <td class="numbers"><strong>{{ total }}</strong></td>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for stock in rows %}
+            <tr>
+                <td>
+                    {{ stock["symbol"] }}
+                </td>
+                <td>
+                    {{ iexdata[stock["symbol"]]["name"] }}
+                </td>
+                    <td class="numbers">
+                        {{ stock["shares"] }}
+                    </td>
+                    <td class="numbers">
+                        {{ iexdata[stock["symbol"]]["price"] }}
+                    </td>
+                    <td class="numbers">
+                        {{ iexdata[stock["symbol"]]["total"] }}
+                    </td>
+                </div>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan=4>CASH</td>
+                <td class="numbers">{{ cash }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+{% endblock %}
