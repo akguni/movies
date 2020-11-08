@@ -37,7 +37,11 @@ db = SQL("postgres://***REMOVED***")
 
 # Make sure API key is set
 if not os.environ.get("API_KEY"):
-    raise RuntimeError("API_KEY not set")
+    #set iur api ke for the stock quote engine
+    try:
+        os.environ["API_KEY"] = ["pk_a8ae175e4f5141629072dfcf092bc41a"]
+    except:
+        raise RuntimeError("API_KEY not set")
 
 
 @app.route("/")
