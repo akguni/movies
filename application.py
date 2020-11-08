@@ -39,7 +39,7 @@ db = SQL("postgres://***REMOVED***")
 if not os.environ.get("API_KEY"):
     #set iur api ke for the stock quote engine
     try:
-        os.environ["API_KEY"] = ["pk_a8ae175e4f5141629072dfcf092bc41a"]
+        os.environ["API_KEY"] = "pk_a8ae175e4f5141629072dfcf092bc41a"
     except:
         raise RuntimeError("API_KEY not set")
 
