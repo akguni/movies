@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+
+<div class="card-deck">
+    {% for movie in movies %}    
+                {% if movie['Poster']!="N/A" %}
+                <a href="/details/{{ movie['imdbID'] }}">
+                    <div class="card h-100" style="max-width: 18rem; margin: 5px;">                        
+                        <img class="img-thumbnail img-fluid poster" name="submit" src="{{ movie['Poster'] }}" alt="{{ movie['Title'] }}">
+                    </div>
+                </a>
+                {% endif %}
+    {% endfor %}
+ </div>
+{% endblock %}

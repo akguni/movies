@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Details
+{% endblock %}
+
+{% block main %}
+<div class="card-deck">
+    <div class="card bg-dark">
+        <img class="img-thumbnail img-fluid poster" src="{{ movie['Poster'] }}">
+    </div>
+    <div class="card bg-warning">
+        <div class="card-body text-justify">
+            <h4>{{ movie['Title']}} - {{ movie['Year']}}</h4>
+            <p>{{ movie['Genre']}}</p>
+            <p><b>IMDB Rating:</b> {{ movie['imdbRating']}}</p>
+            <p><b>Director:</b> {{ movie['Director']}}</p>
+            <p><b>Cast:</b> {{ movie['Actors']}}</p>
+            <p>{{ movie['Plot']}}</p>
+            <p><strong>User Statistics</strong></p>
+            <div class="container">
+                {% for i in range(0, 3, 2) %}
+                    <div class="row">
+                        <div class="col">{{ statskey[i] }}:</div>
+                        <div class="col">{{ this_movie_stats[i] }}</div>
+                        <div class="col">{{ statskey[i+1] }}:</div>
+                        <div class="col">{{ this_movie_stats[i+1] }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+            {% if this_movie_stats[4]!=0 %}
+            <br>
+                <p>Average Rating: <b>{{ scale[this_movie_stats[5]] }}</b> based on <b>{{ this_movie_stats[4] }}</b>{% if this_movie_stats[4] > 1 %} users.{% else %} user.{% endif %}</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="card bg-success">
+        <div class="card-body text-left">
+            <form action="/save" method="POST">
+                <div style="margin-bottom: 20px">
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                        <input  id="listed" class="form-check-input" type="checkbox" name="listed" value="true" {{ this_movie["listed"] }}>In my list
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                        <input id="watched" class="form-check-input" type="checkbox" name="watched" value="true" onchange="canRate()" {{ this_movie["watched"] }}>Watched
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                        <input id="watchlist" class="form-check-input" type="checkbox" name="watchlist" value="true" {{ this_movie["watchlist"] }}>Watchlist
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="own_rating" style="width: 45%;">My Rating:</label>
+                    <select class="form-control" name= "own_rating" id="own_rating" style="width: 45%;">
+                        {% for i in range(6) %}
+                            <option value= "{{ i }}" {{ this_movie["rating"][i] }}>{{ scale[i] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="special_category" style="width: 45%;">Best of:</label>
+                    <select class="form-control" name="special_category" id="special_category" style="width: 45%;">
+                        {% for i in categories %}
+                            <option value="{{ i[0] }}" {{ this_movie["special_category"][i[0]] }}>{{ i[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <script>                        
+                    canRate();                       
+                    function canRate() {
+                        var watchflag = document.getElementById("watched").checked;
+                        if (watchflag) {
+                            document.getElementById("watchlist").value = null;
+                        }                                            
+                        document.getElementById("watchlist").disabled = watchflag;
+                        document.getElementById("own_rating").disabled = !watchflag;
+                        document.getElementById("special_category").disabled = !watchflag;
+                    }                    
+                </script>
+                {% for key in keys %}
+                    <input type="hidden" name="{{ key }}" value="{{ movie[key] }}">
+                {% endfor %}
+                <button type="submit" class="btn btn-primary btn-block">SAVE / UPDATE MY LIST</button>                
+            </form>
+        </div>
+    </div>   
+</div>
+{% endblock %}
