@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Details
+Details
 {% endblock %}
 
 {% block main %}
@@ -18,15 +18,37 @@
             <p><b>Cast:</b> {{ movie['Actors']}}</p>
             <p>{{ movie['Plot']}}</p>
             <p><strong>User Statistics</strong></p>
-            <div class="container">
-                {% for i in range(0, 3, 2) %}
-                    <div class="row">
-                        <div class="col">{{ statskey[i] }}:</div>
-                        <div class="col">{{ this_movie_stats[i] }}</div>
-                        <div class="col">{{ statskey[i+1] }}:</div>
-                        <div class="col">{{ this_movie_stats[i+1] }}</div>
-                    </div>
-                {% endfor %}
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="col-6">{{ statskey[0] }}</th>
+                            <th scope="col" class="col-6">{{ statskey[1] }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ this_movie_stats[0] }}</td>
+                            <td>{{ this_movie_stats[1] }}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="col-6">{{ statskey[2] }}</th>
+                            <th scope="col" class="col-6">{{ statskey[3] }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ this_movie_stats[2] }}</td>
+                            <td>{{ this_movie_stats[3] }}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
             </div>
             {% if this_movie_stats[4]!=0 %}
             <br>
