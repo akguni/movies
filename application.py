@@ -54,6 +54,7 @@ categories = (db.engine.execute("SELECT * FROM special_categories ORDER BY categ
 
 # Start Page    
 @app.route("/")
+@login_required
 def index():
     return redirect("/lists")
 
