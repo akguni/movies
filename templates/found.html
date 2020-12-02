@@ -10,7 +10,7 @@
     {% for movie in movies %}    
                 {% if movie['Poster']!="N/A" %}
                 <a href="/details/{{ movie['imdbID'] }}">
-                    <div class="card h-100" style="max-width: 18rem; margin: 5px;">                        
+                    <div class="card h-100" style="max-width: 40vw; margin: 5px;">                        
                         <img class="img-thumbnail img-fluid poster" name="submit" src="{{ movie['Poster'] }}" alt="{{ movie['Title'] }}">
                     </div>
                 </a>
