@@ -352,9 +352,13 @@ def login():
         # Query database for username
         rows = db.engine.execute("SELECT * FROM users WHERE username = %s", (request.form.get("username"),)).fetchall()
 
-        # Ensure username exists and password is correct
-        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
-            flash('Invalid username and/or password. Please try again.')
+        # Ensure username exists
+        if len(rows) != 1:
+            flash('This user does not exist. Please try again or register now.')
+            return render_template("/login.html")
+        #  and password is correct
+        if (not check_password_hash(rows[0]["hash"], request.form.get("password"))):
+            flash('Incorrect password. Please try again.')
             return render_template("/login.html")
 
         # Remember which user has logged in
