@@ -67,7 +67,7 @@ Details
                     </div>
                     <div class="form-check-inline">
                         <label class="form-check-label">
-                        <input id="watched" class="form-check-input" type="checkbox" name="watched" value="true" onchange="canRate()" {{ this_movie["watched"] }}>Watched
+                        <input id="watched" class="form-check-input" type="checkbox" name="watched" value="true" {{ this_movie["watched"] }}>Watched
                         </label>
                     </div>
                     <div class="form-check-inline">
@@ -92,18 +92,6 @@ Details
                         {% endfor %}
                     </select>
                 </div>
-                <script>                        
-                    canRate();                       
-                    function canRate() {
-                        var watchflag = document.getElementById("watched").checked;
-                        if (watchflag) {
-                            document.getElementById("watchlist").value = null;
-                        }                                            
-                        document.getElementById("watchlist").disabled = watchflag;
-                        document.getElementById("own_rating").disabled = !watchflag;
-                        document.getElementById("special_category").disabled = !watchflag;
-                    }                    
-                </script>
                 {% for key in keys %}
                     <input type="hidden" name="{{ key }}" value="{{ movie[key] }}">
                 {% endfor %}

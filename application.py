@@ -124,17 +124,17 @@ def save():
         Plot = request.form.get("Plot")
         imdbRating = request.form.get("imdbRating")
         Poster = request.form.get("Poster")
-        
+        rating = int(request.form.get("own_rating") or 0)
+        special_category =  int(request.form.get("special_category") or 0)
         watchlist = False
-        if request.form.get("watched") == "true":
+        if request.form.get("watched") == "true" or rating != 0 or special_category != 0:
             watched = True
         else:
             watched = False
             if request.form.get("watchlist") == "true":
                 watchlist = True
-
-        rating = int(request.form.get("own_rating") or 0)
-        special_category =  int(request.form.get("special_category") or 0)
+        
+        
         save_message = 'Changes saved to your lists.'
         # check if the movie is already in the database
         moviedb = db.engine.execute("SELECT * FROM movies WHERE imdbid = %s", (imdbID)).fetchall()
@@ -226,8 +226,8 @@ def save():
                 # insert it into local db
 
                 db.engine.execute("INSERT INTO movies (imdbid, title, year, genre, director, actors, plot, imdbrating, poster, last_editor) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (imdbID, Title, Year, Genre, Director, Actors, Plot, imdbRating, Poster, session["user_id"]))
-
-            if contingent <= 0:
+            
+            if  special_category != 0 and contingent <= 0:
                 special_category = 0
                 save_message = "You have already allocated maximum number of movies under that 'best' category. If you still want to give this category to this movie, please first remove this category from one or more other movie. All other changes are saved."
 
