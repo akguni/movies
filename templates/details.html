@@ -77,16 +77,16 @@ Details
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="own_rating" style="width: 45%;">My Rating:</label>
-                    <select class="form-control" name= "own_rating" id="own_rating" style="width: 45%;">
+                    <label for="own_rating" style="width: 30%;">My Rating:</label>
+                    <select class="form-control" name= "own_rating" id="own_rating" style="width: 60%;">
                         {% for i in range(6) %}
                             <option value= "{{ i }}" {{ this_movie["rating"][i] }}>{{ scale[i] }}</option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="special_category" style="width: 45%;">Best of:</label>
-                    <select class="form-control" name="special_category" id="special_category" style="width: 45%;">
+                    <label for="special_category" style="width: 30%;">Best of:</label>
+                    <select class="form-control" name="special_category" id="special_category" style="width: 60%;">
                         {% for i in categories %}
                             <option value="{{ i[0] }}" {{ this_movie["special_category"][i[0]] }}>{{ i[1] }}</option>
                         {% endfor %}
