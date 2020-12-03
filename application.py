@@ -33,9 +33,9 @@ app.secret_key ='***REMOVED***'
 # Access postgres database
 # use either production or local from one of the two below but not both
 # This one is for production on heroku servers
-# db = create_engine('postgresql+psycopg2://***REMOVED***')
+db = create_engine('postgresql+psycopg2://***REMOVED***')
 # This one is for local postgres file
-db = create_engine('postgresql+psycopg2://ismas:postgres@localhost:5432/movies')
+# db = create_engine('postgresql+psycopg2://ismas:postgres@localhost:5432/movies')
 
 # Make sure API key is set
 if not os.environ.get("API_KEY"):
@@ -407,7 +407,7 @@ def register():
         # fetch user id in order to log on the registered user directly
         session["user_id"] = db.engine.execute("SELECT id FROM users WHERE username = %s", (request.form.get("username"),)).fetchall()[0][0]
         session["user_name"] = username
-        
+
         # Redirect user to home page
         return redirect("/")
 
