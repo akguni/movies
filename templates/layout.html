@@ -30,16 +30,18 @@
             <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            {% if session.user_id %}
+                <form action="/search" method="POST">
+                    <input type="text" placeholder="Search.." name="titlepart">
+                    <button type="submit">Submit</button>
+                </form>
+            {% endif %}            
             <div class="collapse navbar-collapse" id="navbar">
                 {% if session.user_id %}
-                        <form action="/search" method="POST">
-                            <input type="text" placeholder="Search.." name="titlepart">
-                            <button type="submit">Submit</button>
-                        </form>
-                        <ul class="navbar-nav mr-auto mt-2">
-                        <li class="nav-item"><a class="nav-link" href="/lists">My Lists</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/change">Change Password</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/logout">Log Out User: {{ session.user_name }}</a></li>
+                    <ul class="navbar-nav mr-auto mt-2">
+                    <li class="nav-item"><a class="nav-link" href="/lists">My Lists</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/change">Change Password</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Log Out User: {{ session.user_name }}</a></li>
                     </ul>
                 {% else %}
                     <ul class="navbar-nav mr-auto mt-2">
