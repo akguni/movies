@@ -48,11 +48,6 @@ main img
     max-width: 100%;
 }
 
-.numbers
-{
-    text-align: right;
-}
-
 .poster
 {
     object-fit: contain;
