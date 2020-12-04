@@ -5,7 +5,7 @@ On [MOVIES-FOR-FRIENDS (MFF)](https://movies-for-friends.herokuapp.com) website 
 
 You can also see what other users are adding to their lists, and see the average ratings for a given movie but without identifying and single user or their individual ratings.
 
-Who is this for?
+## Who is MFF for?
 
 MOVIES-FOR-FRIENDS is useful to anyone if they would like to keep track of which movies they have seen and how they liked them, and keep an eye on what they would like to watch next. There is also a social element, thanks to 'pooling' of other users' ratings and lists.
 
@@ -16,16 +16,16 @@ MOVIES-FOR-FRIENDS is useful to anyone if they would like to keep track of which
 
 Of course you can use IMDB for achieving most of the same functionality but I personally found it to be cumbersome particularly because although you can define your own lists, they are not easy to compare with other users.
 
-Technologies Used
+## Technologies Used
 
-    The idea and initial skeleton of the website was inspired by "Finance" website as part of Hardvard's CS50 Web Development Track.
-    Flask web framework.
-    Bootstrap 4.0 CSS layout.
-    Heroku web-hosting.
-    PostgreSQL database.
-    OMDb API movie details under CC BY-NC 4.0 licence.
+* The idea and initial skeleton of the website was inspired by "Finance" website as part of Hardvard's CS50 Web Development Track.
+* Flask web framework.
+* Bootstrap 4.0 CSS layout.
+* Heroku web-hosting.
+* PostgreSQL database.
+* OMDb API movie details under CC BY-NC 4.0 licence.
 
-How to Use the site:
+## How to Use the site:
 
 - Register with a username and password of your choice (no restrictions)
 - Search a movie using any word in its title
@@ -44,4 +44,4 @@ How to Use the site:
 
 - If you click on any of these, you will be presented with a list of all the movies in that category
 
-HAVE FUN!
+### HAVE FUN!
