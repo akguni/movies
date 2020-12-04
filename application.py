@@ -82,15 +82,15 @@ def details(imdbID):
     exists = db.engine.execute("SELECT * FROM user_list WHERE imdbid = %s AND id = %s", (movie["imdbID"], session["user_id"])).fetchall()
     if len(exists) == 1:
         this_movie["listed"] = "checked"
-        if (exists[0][3]):
+        if exists[0][3]:
             this_movie["watched"] = "checked"
-        if (exists[0][4] != None and exists[0][4] != 0):
+        if exists[0][4] != None and exists[0][4] != 0:
             this_movie["rating"][0]=""
             this_movie["rating"][exists[0][4]] = "selected"
-        if (exists[0][5]!= None and exists[0][5] != 0):
+        if exists[0][5]!= None and exists[0][5] != 0:
             this_movie["special_category"][0]=""
             this_movie["special_category"][exists[0][5]] = "selected"
-        if (exists[0][6]):
+        if exists[0][6]:
             this_movie["watchlist"] = "checked"
 
     moviestats = db.engine.execute("SELECT listed, watched, watchlist, best, rated, sum_rating FROM movies WHERE imdbid = %s", (imdbID,)).fetchall()
@@ -204,7 +204,7 @@ def save():
                         db.engine.execute("UPDATE movies SET rated = rated - 1, last_editor = %s WHERE imdbid = %s", (session["user_id"], imdbID))
                         db.engine.execute("UPDATE users SET rated = rated - 1 WHERE id = %s", (session["user_id"],))
 
-                if (special_category != before[5]):
+                if special_category != before[5]:
                     if special_category == 0:
                         db.engine.execute("UPDATE movies SET best = best - 1, last_save = now(), last_editor = %s WHERE imdbid = %s", (session["user_id"], imdbID))
                         db.engine.execute("UPDATE users SET best = best - 1 WHERE id = %s", (session["user_id"],))
@@ -260,7 +260,7 @@ def save():
 @app.route("/lists", methods=["GET", "POST"])
 @login_required
 def lists():
-   
+
     allmovies[0][0] = (db.engine.execute("SELECT COUNT (*) FROM user_list WHERE id = %s", (session["user_id"]),).fetchone())[0]
     allmovies[0][1] = (db.engine.execute("SELECT COUNT (*) FROM user_list WHERE id = %s AND user_watched = %s", (session["user_id"], True),).fetchone())[0]
     allmovies[0][2] = (db.engine.execute("SELECT COUNT (*) FROM user_list WHERE id = %s AND user_watchlist = %s", (session["user_id"], True),).fetchone())[0]
@@ -275,7 +275,7 @@ def lists():
     allmovies[1][4] = (db.engine.execute("SELECT COUNT (DISTINCT imdbid) FROM user_list WHERE special_category > 0").fetchone())[0]
     for i in range(1, 5):
         allmovies[1][i+4] = (db.engine.execute("SELECT COUNT (DISTINCT imdbid) FROM user_list WHERE special_category = %s", (i,)).fetchone())[0]
-    
+
     return render_template("lists.html", allmovies=allmovies, categories=categories)
 
 @app.route('/drilldown/<choice>')
@@ -303,7 +303,7 @@ def drilldown(choice):
                 list = (db.engine.execute("SELECT * FROM movies JOIN user_list ON movies.imdbid=user_list.imdbid WHERE user_list.id = %s AND special_category = %s ORDER BY last_save DESC", (session["user_id"], i)).fetchall())
                 report = "categorized 'Best of "+categories[i][1]+"' by me"
                 break
-        
+
     if choice == "10":
         list = (db.engine.execute("SELECT * FROM movies WHERE imdbid IN (SELECT imdbid FROM user_list) ORDER BY last_save DESC").fetchall())
         report = "saved by all users"
@@ -357,7 +357,7 @@ def login():
             flash('This user does not exist. Please try again or register now.')
             return render_template("/login.html")
         #  and password is correct
-        if (not check_password_hash(rows[0]["hash"], request.form.get("password"))):
+        if not check_password_hash(rows[0]["hash"], request.form.get("password")):
             flash('Incorrect password. Please try again.')
             return render_template("/login.html")
 
@@ -452,7 +452,7 @@ def logout():
     session.clear()
 
     # Redirect user to login form
-    return redirect("/")        
+    return redirect("/")
 
 # Error handling code
 

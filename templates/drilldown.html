@@ -12,6 +12,7 @@ Drilldown
             <div class="card-body">
             {% for i in list %}
                     <div class="row">
+                        <div class="col"><img class="img-thumbnail img-fluid poster thumb" src="{{ i[8] }}"></div>                        
                         <div class="col-md"><a href="/details/{{ i[0] }}">{{ i[1] }} </a></div>
                         <div class="col-md-auto">{{ i[2] }}</div>
                         <div class="col-md">{{ i[3] }}</div>

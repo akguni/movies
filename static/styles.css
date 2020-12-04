@@ -58,6 +58,10 @@ main img
     object-fit: contain;
 }
 
+.thumb
+{
+  max-width: 4em;
+}
 
 /* This block is for 'card view' */ 
 * {
@@ -73,7 +77,7 @@ main img
   
 
   /* Remove extra left and right margins, due to padding in columns */
-  .row {margin: 0 -5px; margin-bottom: 10px;}
+  .row {margin: 0 -25px; margin-bottom: 10px;}
   
   /* Clear floats after the columns */
   .row:after {
