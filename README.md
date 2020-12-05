@@ -20,7 +20,9 @@ Of course you can use IMDB for achieving most of the same functionality but I pe
 
 The idea was inspired by the outcome and the capabilities of Finance web page building problemset I finished as part of Hardvard's CS50 Web Development Track. I even started to build MFF by adding on to a working copy of Finance page and then removing the most obviously unused elements.
 
-In order to use the tool myself as well as make it available to others, in the first instance to my friends, I moved the site to Heroku and the first challenge was to make everything work there. For database, Heroku uses PostgreSQL, so I had to adapt flask code for this as well. Lots of googling and learning from experiences of others' helped me come up with MFF. I and my friends tested it on desktop as well as mobile platforms, ironing out several glitches in the process. 
+In order to display movie details and Posters, I thought I could use IMDB but they don't seem have a free API for live information. After a bit of research I found Open Movie Datadabase (OMDb), which does most of what I need and it is free for non-commercial use - up to 1000 requests per day.  
+
+In order to use the tool myself away from my main pc and of course make it available to my friends and everyone else, I had to find a hosting service. Heroku has a free tier and the first challenge was to adapt everything to work with their account. For database, Heroku uses PostgreSQL, so I had to adapt flask code for this as well. Lots of googling and learning from experiences of others' helped me come up with MFF. I and my friends tested it on desktop as well as mobile platforms, ironing out several glitches in the process. 
 
 ## Technologies Used
 
