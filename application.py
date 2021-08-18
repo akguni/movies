@@ -33,7 +33,7 @@ app.secret_key ='***REMOVED***'
 # Access postgres database
 # use either production or local from one of the two below but not both
 # This one is for production on heroku servers
-db = create_engine('postgresql+psycopg2://***REMOVED***')
+db = create_engine('***REMOVED***')
 # This one is for local postgres file
 # db = create_engine('postgresql+psycopg2://ismas:postgres@localhost:5432/movies')
 
