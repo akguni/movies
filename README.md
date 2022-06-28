@@ -1,7 +1,6 @@
 # MOVIES-FOR-FRIENDS
-CS50 Webtrack Final Project Website creating personalized lists for movie fans.
 
-On [MOVIES-FOR-FRIENDS (MFF)](https://movies-for-friends.herokuapp.com) website you can set up an account and make a list of movies you have seen or would like to see, give a personal rating and add them to your own 'best of' categories if required.
+On [MOVIES-FOR-FRIENDS (MFF)] website you can set up an account and make a list of movies you have seen or would like to see, give a personal rating and add them to your own 'best of' categories if required.
 
 You can then see what other users are adding to their watchlists, their average ratings for the movies they wathced, 'best of' lists and no user is individually identified.
 
@@ -18,7 +17,7 @@ Of course you can use IMDB for achieving most of the same functionality but I pe
 
 # How did I go about building this?
 
-The idea was inspired by the outcome and the capabilities of Finance web page building problemset I finished as part of Hardvard's CS50 Web Development Track. I even started to build MFF by adding on to a working copy of Finance page and then removing the most obviously unused elements.
+The idea was inspired by the outcome and the capabilities of Finance web page building problemset I finished as part of Introduction to Computer Science course offered by Harvard University Track. I even started to build MFF by adding on to a working copy of Finance page and then removing the most obviously unused elements.
 
 In order to display movie details and Posters, I thought I could use IMDB but they don't seem have a free API for live information. After a bit of research I found Open Movie Datadabase (OMDb), which does most of what I need and it is free for non-commercial use - up to 1000 requests per day.  
 
